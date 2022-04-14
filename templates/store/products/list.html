@@ -1,0 +1,43 @@
+{% extends "../base.html" %}
+
+{% block title %}
+
+List of products
+
+{% endblock %}
+
+{% block content %}
+	
+	<table class="table">
+	  <thead>
+	    <tr>
+	      <th scope="col">Producto</th>
+	      <th scope="col">Precio</th>
+	      <th scope="col">Activo</th>
+	      <th scope="col">In_stock</th>
+		  <th scope="col">Categoría</th>
+		  <th scope="col">Acción</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    {% for product in object_list %}
+		<tr>
+	      <th scope="row">{{product.name}}</th>
+	      <td>{{product.price}}</td>
+	      <td>{{product.active}}</td>
+	      <td>{{product.in_stock}}</td>
+		  <td>{{product.category}}</td>
+		  <td>
+			  <a button type="button" class="btn btn-outline-secondary btn-sm" href="{% url 'store:product_update' product.slug %}">Edit</a>
+			  <a button type="button" class="btn btn-outline-secondary btn-sm" href="{% url 'store:product_delete' product.slug %}">Delete</a>
+			</li>
+		</td>
+	    </tr>
+	   {% endfor %}
+	   <tr><td>
+	   	<a button type="button" class="btn btn-outline-primary btn-sm" href="{% url 'store:product_create' %}">Create new product</a>
+	   </td></tr>
+	  </tbody>
+	</table>
+	
+{% endblock %}

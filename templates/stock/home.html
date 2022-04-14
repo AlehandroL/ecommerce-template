@@ -1,0 +1,35 @@
+{% extends "../store/base.html" %}
+{% load static %}
+{% block title %}Stock{% endblock %}
+{% block content %}
+
+	
+	<table class="table">
+	  <thead>
+	    <tr>
+	      <th scope="col">Producto</th>
+	      <th scope="col">Stock disponible</th>
+	      <th scope="col">Stock reservado</th>
+	      <th scope="col">Stock en tránsito</th>
+		  <th scope="col">Stock dañado</th>
+		  <th scope="col">Valor total</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    {% for item in stock %}
+		<tr>
+	      <th scope="row">{{item.product}}</th>
+	      <td>{{item.available}}</td>
+	      <td>{{item.reserved}}</td>
+	      <td>{{item.on_order}}</td>
+		  <td>{{item.damaged}}</td>
+		  <td>{{item.value}}</td>
+	    </tr>
+	   {% endfor %}
+	  </tbody>
+	</table>
+	
+	
+	
+	
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "./base.html" %}
+{% load static %}
+{% block title %}Tami PH{% endblock %}
+{% block content %}
+    <div class="px-10 py-2 my-5 text-center">
+      <img class="d-block mx-auto mb-4" src="/media/images/Django1.jpeg" alt="" width="72" height="57">
+      <h1 class="display-5 fw-bold">Tami PH Studio</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">Nos dedicamos a lograr que nuestros clientes además de embellecer su cuerpo, se relajen profundamente y disfruten de un momento especial.</p>
+			<p class="lead mb-4">Agenda tu hora y date una pausa en la que recuperes fuerzas para seguir. Tami le da paz a tus sentidos y belleza a tu cuerpo, manos y pies.</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Agendar</button>
+          <button type="button" class="btn btn-outline-secondary btn-lg px-4">Cancelar hora</button>
+        </div>
+      </div>
+    </div>
+	
+	<div class="album py-3 bg-light">
+	    <div class="container">
+
+	      <div class="pb-3 h5">Artículos</div>
+	      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
+
+	        {% for product in products %}
+
+	        <div class="col">
+	          <div class="card shadow-sm">
+	            <img class="img-fluid" alt="Responsive image" src="{{ product.image.url }}">
+	            <div class="card-body">
+	              <p class="card-text">
+	                <a class="text-dark text-decoration-none" href={{ product.get_absolute_url }}>{{ product.name }}</a>
+	              </p>
+	              <div class="d-flex justify-content-between align-items-center">
+	                <small class="text-muted" href="#">{{ product.desc }}</small>
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+
+	        {% endfor %}
+
+	      </div>
+	    </div>
+	  </div>
+	
+{% endblock %}
